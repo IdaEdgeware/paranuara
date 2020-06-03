@@ -56,7 +56,7 @@ def route_company(company_name):
             "status": "Error",
             "message": "An error ocurred while processing this request",
         }
-        return jsonify(error_response)
+        return jsonify(error_response["message"])
 
 
 @APP.route("/paranuara/person/<string:person_name>", methods=["get"])
@@ -83,7 +83,7 @@ def route_person(person_name):
             "status": "Error",
             "message": "An error ocurred while processing this request",
         }
-        return jsonify(error_response)
+        return jsonify(error_response["message"])
 
 
 @APP.route("/paranuara/people/", methods=["get"])
