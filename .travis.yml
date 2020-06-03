@@ -1,7 +1,0 @@
-language: python
-python:
-- '3.5'
-install: pip install -r req.txt
-script:
-- python3 conftest.py
-- curl -s -X POST https://cloud.docker.com/api/build/v1/source/eb3d6616-055c-47cc-a077-746bfb814151/trigger/61c7c108-3f8f-4576-9342-a6119e062db8/call/
