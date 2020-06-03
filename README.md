@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/amritanshu-pandey/hivery-challenge.svg?branch=master)](https://travis-ci.org/amritanshu-pandey/hivery-challenge)
+
 
 # API Endpoints
 | HTTP Method | URL | Action |
@@ -9,9 +9,9 @@
 
 # How to Install
 1. Pull Docker image 
-    - `docker pull idarahnama/paranuaran`
+    - `docker pull idarahnama/paranuara`
 2. Run docker container 
-    - `docker run [--name <any_name>] -p <local_port>:5000 idarahnama/paranuaran`
+    - `docker run [--name <any_name>] -p <local_port>:5000 idarahnama/paranuara`
 3. API would now be accessible on local port specified in previous command
 
 # To-Do
