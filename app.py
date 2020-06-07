@@ -1,6 +1,7 @@
 """Main driver for the application"""
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
+from models import PersonSchema, CompanySchema
 import sys
 
 APP = Flask(__name__)
@@ -48,7 +49,9 @@ def find_common_friends(person1, person2):
 def route_company(company_name):
     """ Return employees of a company """
     try:
-        company_id = MONGO.db.companies.find_one({"company": company_name})["index"]
+        schema = CompanySchema()
+        validated_company_name = schema.load(company_name)
+        company_id = MONGO.db.companies.find_one({"company": validated_company_name})["index"]
         company_employees = list(MONGO.db.people.find({"company_id": company_id}))
         return jsonify(company_employees)
     except:
@@ -63,8 +66,10 @@ def route_company(company_name):
 def route_person(person_name):
     """ Return details of a single person """
     try:
+        schema = PersonSchema()
+        validated_person_name = schema.load(person_name)
         user_detail = {}
-        person_details = MONGO.db.people.find_one({"name": person_name})
+        person_details = MONGO.db.people.find_one({"name": validated_person_name})
         user_detail.update({"username": person_details["name"]})
         user_detail.update({"age": person_details["age"]})
         favFood = person_details["favouriteFood"]
@@ -89,10 +94,13 @@ def route_person(person_name):
 @APP.route("/paranuara/people/", methods=["get"])
 def route_two_people():
     try:
+        schema = PersonSchema()
         person1 = request.args.get("person1")
+        validated_person1 = schema.load(person1)
         person2 = request.args.get("person2")
-        person1_details = MONGO.db.people.find_one({"name": person1})
-        person2_details = MONGO.db.people.find_one({"name": person2})
+        person1_details = MONGO.db.people.find_one({"name": validated_person1})
+        validated_person2 = schema.load(person2)
+        person2_details = MONGO.db.people.find_one({"name": validated_person2})
         person1_response = {
             "username": person1_details["name"],
             "age": person1_details["age"],
