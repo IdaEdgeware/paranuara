@@ -1,5 +1,5 @@
-# Travis-CI
-The Travis CI is used for continous integration and testing:
+# Travis CI
+Travis CI is used for continous integration and testing: 
 [![Build Status](https://travis-ci.org/IdaEdgeware/paranuara.svg?branch=master)](https://travis-ci.org/IdaEdgeware/paranuara)
 
 # API Endpoints
