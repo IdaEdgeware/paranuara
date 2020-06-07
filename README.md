@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/IdaEdgeware/paranuara.svg?branch=master)](https://travis-ci.org/IdaEdgeware/paranuara)
 
 # API Endpoints
 | HTTP Method | URL | Action |
